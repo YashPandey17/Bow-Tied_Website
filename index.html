@@ -671,16 +671,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  on(submitFormBtn, 'click', () => {
-    if (getStartedForm?.checkValidity()) {
-      alert('Thank you for your submission! We will contact you soon.');
-      getStartedModal?.classList.add('hidden');
-      body.classList.remove('overflow-hidden');
-      getStartedForm.reset();
-    } else {
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxI-cigHexs3QDK2B_BImUiKNrdaVTKOeKl-uhiMw2cq5NBd1jDsIM1RgzVMXtZ9ETf-g/exec'; // <-- paste your Web app URL here
+
+  on(submitFormBtn, 'click', async () => {
+    if (!getStartedForm?.checkValidity()) {
       getStartedForm?.reportValidity();
+      return;
+    }
+
+    // Disable the button to prevent double-submits
+    submitFormBtn.disabled = true;
+    submitFormBtn.textContent = 'Submitting...';
+
+    const payload = {
+      name: $('#name')?.value || '',
+      phone: $('#phone')?.value || '',
+      email: $('#email')?.value || '',
+      comments: $('#comments')?.value || ''
+    };
+
+    try {
+      const res = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        mode: 'cors'
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data?.error || `HTTP ${res.status}`);
+      }
+
+      alert('Thanks! Your info was received. We will contact you soon.');
+      getStartedModal?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      getStartedForm.reset();
+
+    } catch (err) {
+      console.error(err);
+      alert('Sorry, something went wrong submitting the form. Please try again in a moment.');
+    } finally {
+      submitFormBtn.disabled = false;
+      submitFormBtn.textContent = 'Submit';
     }
   });
+
 
   // ----- ESC to close any open modal -----
   on(document, 'keydown', (e) => {
