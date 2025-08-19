@@ -366,7 +366,7 @@
                         We're always looking for partners and collaborators. Get in touch to discuss opportunities.
                     </p>
                     <div class="mt-6">
-                        <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-700">
+                        <a href="#" id="get-started-btn-projects" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-700">
                             Get Started
                         </a>
                     </div>
@@ -653,12 +653,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitFormBtn   = $('#submit-form-btn');
   const getStartedForm  = $('#get-started-form');
 
-  on(getStartedBtn, 'click', (e) => {
-    if (e && typeof e.preventDefault === 'function') e.preventDefault();
-    getStartedModal?.classList.remove('hidden');
-    body.classList.add('overflow-hidden');
-    $('#name', getStartedModal)?.focus();
-  });
+  function openGetStarted(e) {
+  if (e?.preventDefault) e.preventDefault();
+  getStartedModal?.classList.remove('hidden');
+  body.classList.add('overflow-hidden');
+  $('#name', getStartedModal)?.focus();
+}
+
+    on(getStartedBtn, 'click', openGetStarted);
+
+    // NEW: also wire the Projects button
+    const getStartedBtnProjects = $('#get-started-btn-projects');
+    on(getStartedBtnProjects, 'click', openGetStarted);
 
   on(closeGetStarted, 'click', () => {
     getStartedModal?.classList.add('hidden');
