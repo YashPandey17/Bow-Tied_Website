@@ -1,744 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bow-Tied | Science & Technology Solutions</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .hero-gradient {
-            background: linear-gradient(135deg, #000000 0%, #111827 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-gradient::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 20%);
-            background-size: 200% 200%;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-            border-left: 3px solid #3b82f6;
-        }
-        .tech-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .tech-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.03) 50%, transparent 52%),
-                linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.03) 50%, transparent 52%);
-            background-size: 20px 20px;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        .transition-all {
-            transition: all 0.3s ease;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bow‑Tied | Science & Technology Solutions</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Bow‑Tied builds practical science & technology solutions: healthcare analytics, AI automation, and data engineering." />
+  <link rel="canonical" href="https://www.bow-tied.com/" />
+  <meta property="og:title" content="Bow‑Tied | Science & Technology Solutions" />
+  <meta property="og:description" content="Healthcare analytics, AI automation, and data engineering projects." />
+  <meta property="og:image" content="https://www.bow-tied.com/assets/og-image.jpg" />
+  <meta property="og:url" content="https://www.bow-tied.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+  <!-- Tailwind (CDN for dev; consider a purged build for prod) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, #000000 0%, #111827 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-gradient::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+      background-size: 200% 200%;
+    }
+    .card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.2), 0 4px 6px -2px rgba(0,0,0,.1);
+      border-left: 3px solid #6366F1; /* indigo-500 */
+    }
+    .tech-card { position: relative; overflow: hidden; }
+    .tech-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.03) 50%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.03) 50%, transparent 52%);
+      background-size: 20px 20px; opacity: .3; pointer-events: none;
+    }
+  </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img src="assets/logo.png" alt="Bow-Tied LLC Logo" class="h-20 w-20 mr-2">
-                        <span class="text-gray-800 font-bold text-xl">Bow-Tied</span>
-                    </div>
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="#" id="home-link" class="border-gray-800 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
-                        <a href="#" id="projects-link" class="border-transparent text-gray-500 hover:border-gray-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Projects</a>
-                    </div>
-                </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <button data-contact-button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
-                        Contact Us
-                    </button>
-                </div>
-                <div class="-mr-2 flex items-center sm:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+  <!-- Header / Navigation -->
+  <header>
+    <nav class="bg-white shadow-md sticky top-0 z-50" aria-label="Primary">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+              <!-- Logo height <= nav height -->
+              <img src="assets/logo.png" alt="Bow‑Tied LLC Logo" class="h-10 w-10 mr-2" />
+              <span class="text-gray-800 font-bold text-xl">Bow‑Tied</span>
             </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <!-- Use consistent indigo active state -->
+              <a href="#" id="home-link" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+              <a href="#" id="projects-link" class="border-transparent text-gray-500 hover:border-gray-600 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Projects</a>
+            </div>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <button data-contact-button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium">Contact Us</button>
+          </div>
+          <div class="-mr-2 flex items-center sm:hidden">
+            <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
+      </div>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="sm:hidden hidden">
-            <div class="pt-2 pb-3 space-y-1">
-                <a href="#" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
-                <div class="mt-4 pl-3">
-                    <button data-contact-button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                        Contact Us
-                    </button>
-                </div>
-            </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="sm:hidden hidden" role="navigation" aria-label="Mobile">
+        <div class="pt-2 pb-3 space-y-1">
+          <a href="#" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+          <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
+          <div class="mt-4 pl-3">
+            <button data-contact-button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">Contact Us</button>
+          </div>
         </div>
+      </div>
     </nav>
+  </header>
 
-    <!-- Main Content -->
-    <main id="content">
-        <!-- Home Page -->
-        <div id="home-page">
-            <!-- Hero Section -->
-            <div class="hero-gradient text-white">
-                <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-                    <div class="text-center">
-                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                            Science & Technology Solutions
-                        </h1>
-                        <p class="mt-6 max-w-2xl mx-auto text-xl">
-                            Leveraging expertise in science and technology to develop innovative, reliable, and data-driven solutions that empower individuals and businesses to solve real-world problems.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="py-12 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="lg:text-center">
-                        <h2 class="text-base text-gray-600 font-semibold tracking-wide uppercase">Approach</h2>
-                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                            Our Methodology
-                        </p>
-                    </div>
-
-                    <div class="mt-10">
-                        <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
-                            <div class="relative">
-                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gray-800 text-white">
-                                    <i class="fas fa-flask"></i>
-                                </div>
-                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Scientific Rigor</p>
-                                <p class="mt-2 ml-16 text-base text-gray-500">
-                                    We apply rigorous scientific methods to ensure our solutions are based on solid evidence and reproducible results.
-                                </p>
-                            </div>
-
-                            <div class="relative">
-                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Data-Driven</p>
-                                <p class="mt-2 ml-16 text-base text-gray-500">
-                                    Our decisions are guided by data analytics and empirical evidence, not just intuition.
-                                </p>
-                            </div>
-
-                            <div class="relative">
-                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                    <i class="fas fa-lightbulb"></i>
-                                </div>
-                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Innovative Thinking</p>
-                                <p class="mt-2 ml-16 text-base text-gray-500">
-                                    We challenge conventional wisdom to develop creative solutions to complex problems.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Section -->
-            <div class="bg-gray-50 py-12">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="lg:text-center">
-                        <h2 class="text-base text-gray-600 font-semibold tracking-wide uppercase">Who We Are</h2>
-                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                            Our Team
-                        </p>
-                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                            A practical team of engineers and technologists with real-world experience.
-                        </p>
-                    </div>
-
-                    <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all card-hover">
-                            <div class="px-6 py-8 sm:p-10 sm:pb-6">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 bg-gray-800 rounded-md p-3">
-                                        <i class="fas fa-user-tie text-white text-xl"></i>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900">Leadership</h3>
-                                    </div>
-                                </div>
-                                <p class="mt-4 text-base text-gray-500">
-                                    Experienced professionals with decades of combined experience in research and industry.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all card-hover">
-                            <div class="px-6 py-8 sm:p-10 sm:pb-6">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
-                                        <i class="fas fa-microscope text-white text-xl"></i>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900">Researchers</h3>
-                                    </div>
-                                </div>
-                                <p class="mt-4 text-base text-gray-500">
-                                    Skilled researchers with hands-on experience in applied science and technology.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all card-hover">
-                            <div class="px-6 py-8 sm:p-10 sm:pb-6">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
-                                        <i class="fas fa-code text-white text-xl"></i>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900">Developers</h3>
-                                    </div>
-                                </div>
-                                <p class="mt-4 text-base text-gray-500">
-                                    Skilled engineers who transform research into practical, scalable solutions.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="bg-gray-800">
-                <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                        <span class="block">Ready to solve your challenges?</span>
-                    </h2>
-                    <p class="mt-4 text-lg leading-6 text-indigo-200">
-                        Contact us today to discuss how we can help your business with our science and technological expertise.
-                    </p>
-                    <a href="#" id="get-started-btn" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto">
-                        Get started
-                    </a>
-                </div>
-            </div>
+  <!-- Main Content -->
+  <main id="content">
+    <!-- Home Page -->
+    <div id="home-page">
+      <!-- Hero Section -->
+      <section class="hero-gradient text-white" aria-labelledby="hero-title">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h1 id="hero-title" class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">Science &amp; Technology Solutions</h1>
+            <p class="mt-6 max-w-2xl mx-auto text-xl">Leveraging expertise in science and technology to develop innovative, reliable, and data‑driven solutions that empower individuals and businesses to solve real‑world problems.</p>
+          </div>
         </div>
+      </section>
 
-        <!-- Projects Page (Hidden by default) -->
-        <div id="projects-page" class="hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div class="lg:text-center">
-                    <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Our Work</h2>
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-black sm:text-4xl">
-                        Current Projects
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                        We develop practical solutions across multiple domains, from marketing automation to healthcare analytics.
-                    </p>
-                </div>
+      <!-- Features Section -->
+      <section class="py-12 bg-white" aria-labelledby="methodology-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="lg:text-center">
+            <h2 class="text-base text-gray-600 font-semibold tracking-wide uppercase" id="methodology-title">Approach</h2>
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our Methodology</p>
+          </div>
 
-                <div class="mt-10 space-y-12 max-w-3xl mx-auto">
-                    <!-- Healthcare Data Visualization -->
-                    <div class="bg-white shadow overflow-hidden sm:rounded-lg transition-all card-hover">
-                        <div class="px-4 py-5 sm:px-6">
-                            <div class="relative">
-                                <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
-                                    <img src="https://static.vecteezy.com/system/resources/previews/048/583/545/non_2x/blue-tablets-on-financial-data-chart-with-graphs-and-statistics-free-photo.jpeg" 
-                                         alt="Healthcare data visualization" 
-                                         class="w-full h-full object-cover">
-                                </div>
-                                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-4">
-                                    Healthcare Data Visualization
-                                </h3>
-                                <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                    Interactive patient data dashboard for healthcare stakeholders
-                                </p>
-                            </div>
-                        </div>
-                        <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-                            <dl class="sm:divide-y sm:divide-gray-200">
-                                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Description
-                                    </dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        Built an interactive R Shiny application that transforms complex patient data into intuitive pictorial graphs and visualizations, making healthcare metrics accessible to non-technical stakeholders.
-                                    </dd>
-                                </div>
-                                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Key Features
-                                    </dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <ul class="list-disc pl-5 space-y-1">
-                                            <li>Interactive data filtering and exploration</li>
-                                            <li>Pictorial representations of patient demographics</li>
-                                            <li>Trend visualization for treatment outcomes</li>
-                                            <li>Exportable reports for clinical meetings</li>
-                                        </ul>
-                                    </dd>
-                                </div>
-                                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Status
-                                    </dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            Prototype Completed
-                                        </span>
-                                    </dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </div>
-                    <!-- AI Content Generator -->
-                    <div class="bg-white shadow overflow-hidden sm:rounded-lg transition-all card-hover">
-                        <div class="px-4 py-5 sm:px-6">
-                            <div class="relative">
-                                <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                                     alt="Person working on laptop" 
-                                     class="w-full h-48 object-cover">
-                                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-4">
-                                    AI Content Generator
-                                </h3>
-                                <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                    Automated marketing content creation system
-                                </p>
-                            </div>
-                        </div>
-                        <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-                            <dl class="sm:divide-y sm:divide-gray-200">
-                                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Description
-                                    </dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        An AI agent that generates complete Mailchimp campaigns from specified inputs, with capabilities for repurposing content across LinkedIn and integrating with customer databases in Google Sheets and Airtable.
-                                    </dd>
-                                </div>
-                                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Key Features
-                                    </dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <ul class="list-disc pl-5 space-y-1">
-                                            <li>Automated Mailchimp campaign generation</li>
-                                            <li>Multi-platform content repurposing</li>
-                                            <li>Database integration capabilities</li>
-                                            <li>Trigger-based content creation</li>
-                                        </ul>
-                                    </dd>
-                                </div>
-                                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Status
-                                    </dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            Prototype Completed
-                                        </span>
-                                    </dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </div>
+          <div class="mt-10">
+            <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+              <div class="relative">
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gray-800 text-white">
+                  <i class="fas fa-flask" aria-hidden="true"></i>
                 </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Scientific Rigor</p>
+                <p class="mt-2 ml-16 text-base text-gray-500">We apply rigorous scientific methods to ensure our solutions are based on solid evidence and reproducible results.</p>
+              </div>
 
-                <div class="mt-12 text-center">
-                    <h3 class="text-lg font-medium text-gray-900">Interested in our projects?</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        We're always looking for partners and collaborators. Get in touch to discuss opportunities.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#" id="get-started-btn-projects" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-700">
-                            Get Started
-                        </a>
-                    </div>
+              <div class="relative">
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  <i class="fas fa-chart-line" aria-hidden="true"></i>
                 </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Data‑Driven</p>
+                <p class="mt-2 ml-16 text-base text-gray-500">Our decisions are guided by data analytics and empirical evidence, not just intuition.</p>
+              </div>
+
+              <div class="relative">
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Innovative Thinking</p>
+                <p class="mt-2 ml-16 text-base text-gray-500">We challenge conventional wisdom to develop creative solutions to complex problems.</p>
+              </div>
             </div>
+          </div>
         </div>
-    </main>
+      </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-                <div class="space-y-8 xl:col-span-1">
-                    <span class="text-white font-bold text-xl">Bow-Tied</span>
-                    <p class="text-gray-300 text-base">
-                        Science and technology solutions for the modern world.
-                    </p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <span class="sr-only">Twitter</span>
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <span class="sr-only">LinkedIn</span>
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <span class="sr-only">GitHub</span>
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
+      <!-- Team Section -->
+      <section class="bg-gray-50 py-12" aria-labelledby="team-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="lg:text-center">
+            <h2 class="text-base text-gray-600 font-semibold tracking-wide uppercase">Who We Are</h2>
+            <p id="team-title" class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our Team</p>
+            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">A practical team of engineers and technologists with real‑world experience.</p>
+          </div>
+
+          <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+              <div class="px-6 py-8 sm:p-10 sm:pb-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 bg-gray-800 rounded-md p-3">
+                    <i class="fas fa-user-tie text-white text-xl" aria-hidden="true"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Leadership</h3>
+                  </div>
                 </div>
-                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <div class="mt-12 md:mt-0">
-                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
-                                Company
-                            </h3>
-                            <ul class="mt-4 space-y-4">
-                                <li>
-                                    <a href="#" class="text-base text-gray-400 hover:text-white">
-                                        About
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
-                            Legal
-                        </h3>
-                        <ul class="mt-4 space-y-4">
-                            <li>
-                                <a href="#" id="privacy-link" class="text-base text-gray-400 hover:text-white">
-                                    Privacy
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-base text-gray-400 hover:text-white">
-                                    Terms
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-base text-gray-400 hover:text-white">
-                                    Cookies
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <p class="mt-4 text-base text-gray-500">Experienced professionals with decades of combined experience in research and industry.</p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+              <div class="px-6 py-8 sm:p-10 sm:pb-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                    <i class="fas fa-microscope text-white text-xl" aria-hidden="true"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Researchers</h3>
+                  </div>
                 </div>
+                <p class="mt-4 text-base text-gray-500">Skilled researchers with hands‑on experience in applied science and technology.</p>
+              </div>
             </div>
-            <div class="mt-12 border-t border-gray-700 pt-8">
-                <p class="text-base text-gray-400 text-center">
-                    &copy; 2025 Bow-Tied. All rights reserved.
-                </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+              <div class="px-6 py-8 sm:p-10 sm:pb-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                    <i class="fas fa-code text-white text-xl" aria-hidden="true"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Developers</h3>
+                  </div>
+                </div>
+                <p class="mt-4 text-base text-gray-500">Skilled engineers who transform research into practical, scalable solutions.</p>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
-    <!-- Privacy Modal -->
-    <div id="privacy-modal" class="fixed z-50 inset-0 hidden overflow-y-auto">
-        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Privacy Policy</h3>
-                    <div class="prose prose-sm text-gray-500">
-                        <p>We respect your privacy. This site may collect:</p>
-                        <ul>
-                            <li>Info you provide (name, email, messages)</li>
-                            <li>Usage data (pages viewed, IP address, device/browser)</li>
-                            <li>Cookies/analytics to improve performance</li>
-                        </ul>
-                        <p><strong>How we use it</strong><br>
-                        To reply to inquiries, provide services, improve the site, and (if you opt in) send updates.</p>
-                        <p><strong>Sharing</strong><br>
-                        We don't sell your data. We may share limited info with trusted service providers (e.g., hosting, analytics) and when required by law.</p>
-                        <p><strong>Your choices</strong><br>
-                        You can request access, correction, or deletion of your data. You can also manage cookies/analytics preferences.</p>
-                        <p><strong>Security</strong><br>
-                        We use reasonable safeguards to protect your information.</p>
-                        <p><strong>Questions?</strong> Contact: yashpandey@bow-tied.com</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" id="close-privacy-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="document.getElementById('privacy-modal').classList.add('hidden'); document.getElementById('home-page').classList.remove('hidden'); document.getElementById('projects-page').classList.add('hidden');">
-                        Close
-                    </button>
-                </div>
-            </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gray-800" aria-labelledby="cta-title">
+        <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+          <h2 id="cta-title" class="text-3xl font-extrabold text-white sm:text-4xl"><span class="block">Ready to solve your challenges?</span></h2>
+          <p class="mt-4 text-lg leading-6 text-indigo-200">Contact us today to discuss how we can help your business with our science and technological expertise.</p>
+          <a href="#" id="get-started-btn" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto">Get started</a>
         </div>
+      </section>
     </div>
 
-    <!-- Contact Modal -->
-    <div id="contact-modal" class="fixed z-50 inset-0 hidden overflow-y-auto">
-        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Contact Information</h3>
-                    <div class="mt-6 space-y-4">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-gray-800 rounded-full p-3">
-                                <i class="fas fa-phone text-white"></i>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-500">Phone</p>
-                                <p class="text-lg font-semibold text-gray-900">248-225-5804</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-indigo-500 rounded-full p-3">
-                                <i class="fas fa-envelope text-white"></i>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-500">Email</p>
-                                <p class="text-lg font-semibold text-gray-900">yashpandey@bow-tied.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" id="close-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                        Close
-                    </button>
-                </div>
-            </div>
+    <!-- Projects Page (Hidden by default) -->
+    <div id="projects-page" class="hidden">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" aria-labelledby="projects-title">
+        <div class="lg:text-center">
+          <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Our Work</h2>
+          <p id="projects-title" class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-black sm:text-4xl">Current Projects</p>
+          <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">We develop practical solutions across multiple domains, from marketing automation to healthcare analytics.</p>
         </div>
+
+        <div class="mt-10 space-y-12 max-w-3xl mx-auto">
+          <!-- Healthcare Data Visualization -->
+          <article class="bg-white shadow overflow-hidden sm:rounded-lg card-hover" aria-labelledby="proj-healthviz-title">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="relative">
+                <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
+                  <img src="https://static.vecteezy.com/system/resources/previews/048/583/545/non_2x/blue-tablets-on-financial-data-chart-with-graphs-and-statistics-free-photo.jpeg"
+                       alt="Healthcare data visualization banner"
+                       class="w-full h-full object-cover"
+                       loading="lazy" decoding="async" width="1470" height="480" />
+                </div>
+                <h3 id="proj-healthviz-title" class="text-lg leading-6 font-medium text-gray-900 mt-4">Healthcare Data Visualization</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Interactive patient data dashboard for healthcare stakeholders</p>
+              </div>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+              <dl class="sm:divide-y sm:divide-gray-200">
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Description</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Built an interactive R Shiny application that transforms complex patient data into intuitive pictorial graphs and visualizations, making healthcare metrics accessible to non‑technical stakeholders.</dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Key Features</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li>Interactive data filtering and exploration</li>
+                      <li>Pictorial representations of patient demographics</li>
+                      <li>Trend visualization for treatment outcomes</li>
+                      <li>Exportable reports for clinical meetings</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Status</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Prototype Completed</span></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <!-- AI Content Generator -->
+          <article class="bg-white shadow overflow-hidden sm:rounded-lg card-hover" aria-labelledby="proj-aicontent-title">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="relative">
+                <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                     alt="Laptop with content planning"
+                     class="w-full h-48 object-cover"
+                     loading="lazy" decoding="async" width="1470" height="480" />
+                <h3 id="proj-aicontent-title" class="text-lg leading-6 font-medium text-gray-900 mt-4">AI Content Generator</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Automated marketing content creation system</p>
+              </div>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+              <dl class="sm:divide-y sm:divide-gray-200">
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Description</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">An AI agent that generates complete Mailchimp campaigns from specified inputs, with capabilities for repurposing content across LinkedIn and integrating with customer databases in Google Sheets and Airtable.</dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Key Features</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li>Automated Mailchimp campaign generation</li>
+                      <li>Multi‑platform content repurposing</li>
+                      <li>Database integration capabilities</li>
+                      <li>Trigger‑based content creation</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Status</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Prototype Completed</span></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <!-- Automated Data Processing (3rd project) -->
+          <article class="bg-white shadow overflow-hidden sm:rounded-lg card-hover" aria-labelledby="proj-dataproc-title">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="relative">
+                <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                       alt="Abstract data processing visualization"
+                       class="w-full h-full object-cover"
+                       loading="lazy" decoding="async" width="1470" height="480" />
+                </div>
+                <h3 id="proj-dataproc-title" class="text-lg leading-6 font-medium text-gray-900 mt-4">Automated Data Processing</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Streamlined data transformation pipeline for business analytics</p>
+              </div>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+              <dl class="sm:divide-y sm:divide-gray-200">
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Description</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Developed an automated data processing system that transforms raw business data into structured formats ready for analysis, reducing manual processing time by 90%.</dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Key Features</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li>Automated data cleaning and validation</li>
+                      <li>Integration with multiple data sources</li>
+                      <li>Custom transformation rules</li>
+                      <li>Error reporting and logging</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Status</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Production Ready</span></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-12 text-center">
+          <h3 class="text-lg font-medium text-gray-900">Interested in our projects?</h3>
+          <p class="mt-2 text-base text-gray-500">We're always looking for partners and collaborators. Get in touch to discuss opportunities.</p>
+          <div class="mt-6">
+            <a href="#" id="get-started-btn-projects" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-700">Get Started</a>
+          </div>
+        </div>
+      </section>
     </div>
-        <!-- Get Started Modal -->
-    <div id="get-started-modal" class="fixed z-50 inset-0 hidden overflow-y-auto">
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div class="space-y-8 xl:col-span-1">
+          <span class="text-white font-bold text-xl">Bow‑Tied</span>
+          <p class="text-gray-300 text-base">Science and technology solutions for the modern world.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white" aria-label="Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white" aria-label="LinkedIn">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white" aria-label="GitHub">
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div class="mt-12 md:mt-0">
+              <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Company</h3>
+              <ul class="mt-4 space-y-4">
+                <li><a href="#" class="text-base text-gray-400 hover:text-white">About</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+            <ul class="mt-4 space-y-4">
+              <li><a href="#" id="privacy-link" class="text-base text-gray-400 hover:text-white">Privacy</a></li>
+              <li><a href="#" class="text-base text-gray-400 hover:text-white">Terms</a></li>
+              <li><a href="#" class="text-base text-gray-400 hover:text-white">Cookies</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-gray-700 pt-8">
+        <p class="text-base text-gray-400 text-center">&copy; 2025 Bow‑Tied. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Privacy Modal -->
+  <div id="privacy-modal" class="fixed z-50 inset-0 hidden overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-        </div>
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Get Started</h3>
-            <form id="get-started-form" class="space-y-4">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            </div>
-            <div>
-                <label for="comments" class="block text-sm font-medium text-gray-700">Comments</label>
-                <textarea id="comments" name="comments" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-            </div>
-            </form>
+          <h3 id="privacy-title" class="text-lg leading-6 font-medium text-gray-900 mb-4">Privacy Policy</h3>
+          <div class="prose prose-sm text-gray-500">
+            <p>We respect your privacy. This site may collect:</p>
+            <ul>
+              <li>Info you provide (name, email, messages)</li>
+              <li>Usage data (pages viewed, IP address, device/browser)</li>
+              <li>Cookies/analytics to improve performance</li>
+            </ul>
+            <p><strong>How we use it</strong><br />To reply to inquiries, provide services, improve the site, and (if you opt in) send updates.</p>
+            <p><strong>Sharing</strong><br />We don't sell your data. We may share limited info with trusted service providers (e.g., hosting, analytics) and when required by law.</p>
+            <p><strong>Your choices</strong><br />You can request access, correction, or deletion of your data. You can also manage cookies/analytics preferences.</p>
+            <p><strong>Security</strong><br />We use reasonable safeguards to protect your information.</p>
+            <p><strong>Questions?</strong> Contact: yashpandey@bow-tied.com</p>
+          </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button type="button" id="submit-form-btn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
-            Submit
-            </button>
-            <button type="button" id="close-get-started-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-            Cancel
-            </button>
+          <button type="button" id="close-privacy-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Close</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="fixed z-50 inset-0 hidden overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <h3 id="contact-title" class="text-lg leading-6 font-medium text-gray-900 mb-4">Contact Information</h3>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-gray-800 rounded-full p-3"><i class="fas fa-phone text-white" aria-hidden="true"></i></div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Phone</p>
+                <p class="text-lg font-semibold text-gray-900">248-225-5804</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-indigo-500 rounded-full p-3"><i class="fas fa-envelope text-white" aria-hidden="true"></i></div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Email</p>
+                <p class="text-lg font-semibold text-gray-900">yashpandey@bow-tied.com</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" id="close-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Get Started Modal -->
+  <div id="get-started-modal" class="fixed z-50 inset-0 hidden overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="get-started-title">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <h3 id="get-started-title" class="text-lg leading-6 font-medium text-gray-900 mb-4">Get Started</h3>
+          <form id="get-started-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" pattern="^[0-9+\-\s()]{7,}$" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+            <div>
+              <label for="comments" class="block text-sm font-medium text-gray-700">Comments</label>
+              <textarea id="comments" name="comments" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" id="submit-form-btn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
+          <button type="button" id="close-get-started-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+        </div>
+      </div>
     </div>
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const $  = (s, r=document) => r.querySelector(s);
-  const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
-  const body = document.body;
+  </div>
 
-  // ----- Mobile menu -----
-  const mobileBtn  = $('#mobile-menu-button');
-  const mobileMenu = $('#mobile-menu');
-  on(mobileBtn, 'click', () => mobileMenu?.classList.toggle('hidden'));
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $ = (s, r = document) => r.querySelector(s);
+      const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
+      const body = document.body;
 
-  // ----- Page navigation -----
-  const homeLink = $('#home-link');
-  const projectsLink = $('#projects-link');
-  const homePage = $('#home-page');
-  const projectsPage = $('#projects-page');
-
-  on(homeLink, 'click', (e) => {
-    e.preventDefault();
-    homePage?.classList.remove('hidden');
-    projectsPage?.classList.add('hidden');
-    homeLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-    homeLink.classList.add('border-indigo-500','text-gray-900');
-    projectsLink.classList.remove('border-indigo-500','text-gray-900');
-    projectsLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-  });
-
-  on(projectsLink, 'click', (e) => {
-    e.preventDefault();
-    homePage?.classList.add('hidden');
-    projectsPage?.classList.remove('hidden');
-    projectsLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-    projectsLink.classList.add('border-indigo-500','text-gray-900');
-    homeLink.classList.remove('border-indigo-500','text-gray-900');
-    homeLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-  });
-
-  // ----- Contact modal -----
-  const contactModal = $('#contact-modal');
-  const closeContact = $('#close-modal');
-
-  document.querySelectorAll('[data-contact-button]').forEach(btn => {
-    on(btn, 'click', (e) => {
-      e.preventDefault();
-      contactModal?.classList.remove('hidden');
-      body.classList.add('overflow-hidden');
-    });
-  });
-
-  on(closeContact, 'click', () => {
-    contactModal?.classList.add('hidden');
-    body.classList.remove('overflow-hidden');
-  });
-
-  on(contactModal, 'click', (e) => {
-    if (e.target === contactModal) {
-      contactModal.classList.add('hidden');
-      body.classList.remove('overflow-hidden');
-    }
-  });
-
-  // ----- Privacy modal -----
-  const privacyLink   = $('#privacy-link');
-  const privacyModal  = $('#privacy-modal');
-  const closePrivacy  = $('#close-privacy-modal');
-
-  on(privacyLink, 'click', (e) => {
-    e.preventDefault();
-    privacyModal?.classList.remove('hidden');
-    body.classList.add('overflow-hidden');
-  });
-
-  on(closePrivacy, 'click', (e) => {
-    e.preventDefault();
-    privacyModal?.classList.add('hidden');
-    body.classList.remove('overflow-hidden');
-  });
-
-  on(privacyModal, 'click', (e) => {
-    if (e.target === privacyModal) {
-      privacyModal.classList.add('hidden');
-      body.classList.remove('overflow-hidden');
-    }
-  });
-
-  // ----- Get Started modal -----
-  const getStartedBtn   = $('#get-started-btn');
-  const getStartedModal = $('#get-started-modal');
-  const closeGetStarted = $('#close-get-started-modal');
-  const submitFormBtn   = $('#submit-form-btn');
-  const getStartedForm  = $('#get-started-form');
-
-  function openGetStarted(e) {
-  if (e?.preventDefault) e.preventDefault();
-  getStartedModal?.classList.remove('hidden');
-  body.classList.add('overflow-hidden');
-  $('#name', getStartedModal)?.focus();
-}
-
-    on(getStartedBtn, 'click', openGetStarted);
-
-    // NEW: also wire the Projects button
-    const getStartedBtnProjects = $('#get-started-btn-projects');
-    on(getStartedBtnProjects, 'click', openGetStarted);
-
-  on(closeGetStarted, 'click', () => {
-    getStartedModal?.classList.add('hidden');
-    body.classList.remove('overflow-hidden');
-  });
-
-  on(getStartedModal, 'click', (e) => {
-    if (e.target === getStartedModal) {
-      getStartedModal.classList.add('hidden');
-      body.classList.remove('overflow-hidden');
-    }
-  });
-
-  // ===== Submit to Google Apps Script (to Google Sheet) =====
-  // Replace with your deployed Web App URL (must end with /exec)
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZtcm1uz565Pd9K8e_1WeUHv5du2SIF9VYueGv_p7n6s6zpzSdlFeGZiM-cjAWkDk/exec';
-
-  on(submitFormBtn, 'click', async () => {
-    if (!getStartedForm?.checkValidity()) {
-      getStartedForm?.reportValidity();
-      return;
-    }
-
-    submitFormBtn.disabled = true;
-    submitFormBtn.textContent = 'Submitting...';
-
-    // build URL-encoded body to avoid CORS preflight
-    const payload = new URLSearchParams({
-      name: $('#name')?.value || '',
-      phone: $('#phone')?.value || '',
-      email: $('#email')?.value || '',
-      comments: $('#comments')?.value || ''
-    });
-
-    try {
-      const res = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: payload
+      // ----- Mobile menu -----
+      const mobileBtn = $('#mobile-menu-button');
+      const mobileMenu = $('#mobile-menu');
+      on(mobileBtn, 'click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        const open = !isHidden;
+        mobileBtn.setAttribute('aria-expanded', String(open));
       });
 
-      const text = await res.text();
-      let data = {};
-      try { data = JSON.parse(text); } catch { /* ignore non-JSON */ }
+      // ----- Page navigation -----
+      const homeLink = $('#home-link');
+      const projectsLink = $('#projects-link');
+      const homePage = $('#home-page');
+      const projectsPage = $('#projects-page');
 
-      if (!res.ok || data.ok !== true) {
-        throw new Error(data?.error || `HTTP ${res.status}`);
-      }
+      on(homeLink, 'click', (e) => {
+        e.preventDefault();
+        homePage?.classList.remove('hidden');
+        projectsPage?.classList.add('hidden');
+        homeLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+        homeLink.classList.add('border-indigo-500','text-gray-900');
+        projectsLink.classList.remove('border-indigo-500','text-gray-900');
+        projectsLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+      });
 
-      alert('Thanks! Your info was received. We will contact you soon.');
-      getStartedModal?.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-      getStartedForm.reset();
+      on(projectsLink, 'click', (e) => {
+        e.preventDefault();
+        homePage?.classList.add('hidden');
+        projectsPage?.classList.remove('hidden');
+        projectsLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+        projectsLink.classList.add('border-indigo-500','text-gray-900');
+        homeLink.classList.remove('border-indigo-500','text-gray-900');
+        homeLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+      });
 
-    } catch (err) {
-      console.error(err);
-      alert('Sorry, something went wrong submitting the form. Please try again in a moment.');
-    } finally {
-      submitFormBtn.disabled = false;
-      submitFormBtn.textContent = 'Submit';
-    }
-  });
+      // ----- Contact modal -----
+      const contactModal = $('#contact-modal');
+      const closeContact = $('#close-modal');
 
-  // ----- ESC to close any open modal -----
-  on(document, 'keydown', (e) => {
-    if (e.key === 'Escape') {
-      [contactModal, privacyModal, getStartedModal].forEach(m => {
-        if (m && !m.classList.contains('hidden')) {
-          m.classList.add('hidden');
+      document.querySelectorAll('[data-contact-button]').forEach(btn => {
+        on(btn, 'click', (e) => {
+          e.preventDefault();
+          contactModal?.classList.remove('hidden');
+          body.classList.add('overflow-hidden');
+        });
+      });
+
+      on(closeContact, 'click', () => {
+        contactModal?.classList.add('hidden');
+        body.classList.remove('overflow-hidden');
+      });
+
+      on(contactModal, 'click', (e) => {
+        if (e.target === contactModal) {
+          contactModal.classList.add('hidden');
           body.classList.remove('overflow-hidden');
         }
       });
-    }
-  });
-});
-</script>
+
+      // ----- Privacy modal -----
+      const privacyLink = $('#privacy-link');
+      const privacyModal = $('#privacy-modal');
+      const closePrivacy = $('#close-privacy-modal');
+
+      on(privacyLink, 'click', (e) => {
+        e.preventDefault();
+        privacyModal?.classList.remove('hidden');
+        body.classList.add('overflow-hidden');
+      });
+
+      on(closePrivacy, 'click', (e) => {
+        e.preventDefault();
+        privacyModal?.classList.add('hidden');
+        body.classList.remove('overflow-hidden');
+      });
+
+      on(privacyModal, 'click', (e) => {
+        if (e.target === privacyModal) {
+          privacyModal.classList.add('hidden');
+          body.classList.remove('overflow-hidden');
+        }
+      });
+
+      // ----- Get Started modal -----
+      const getStartedBtn = $('#get-started-btn');
+      const getStartedModal = $('#get-started-modal');
+      const closeGetStarted = $('#close-get-started-modal');
+      const submitFormBtn = $('#submit-form-btn');
+      const getStartedForm = $('#get-started-form');
+
+      function openGetStarted(e) {
+        if (e?.preventDefault) e.preventDefault();
+        getStartedModal?.classList.remove('hidden');
+        body.classList.add('overflow-hidden');
+        $('#name', getStartedModal)?.focus();
+      }
+
+      on(getStartedBtn, 'click', openGetStarted);
+      const getStartedBtnProjects = $('#get-started-btn-projects');
+      on(getStartedBtnProjects, 'click', openGetStarted);
+
+      on(closeGetStarted, 'click', () => {
+        getStartedModal?.classList.add('hidden');
+        body.classList.remove('overflow-hidden');
+      });
+
+      on(getStartedModal, 'click', (e) => {
+        if (e.target === getStartedModal) {
+          getStartedModal.classList.add('hidden');
+          body.classList.remove('overflow-hidden');
+        }
+      });
+
+      // ===== Submit to Google Apps Script (to Google Sheet) =====
+      // Replace with your deployed Web App URL (must end with /exec)
+      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZtcm1uz565Pd9K8e_1WeUHv5du2SIF9VYueGv_p7n6s6zpzSdlFeGZiM-cjAWkDk/exec';
+
+      on(submitFormBtn, 'click', async () => {
+        if (!getStartedForm?.checkValidity()) {
+          getStartedForm?.reportValidity();
+          return;
+        }
+
+        submitFormBtn.disabled = true;
+        submitFormBtn.textContent = 'Submitting...';
+
+        const payload = new URLSearchParams({
+          name: $('#name')?.value || '',
+          phone: $('#phone')?.value || '',
+          email: $('#email')?.value || '',
+          comments: $('#comments')?.value || ''
+        });
+
+        try {
+          const controller = new AbortController();
+          const to = setTimeout(() => controller.abort(), 12000); // 12s timeout
+          const res = await fetch(APPS_SCRIPT_URL, { method: 'POST', body: payload, signal: controller.signal });
+          clearTimeout(to);
+
+          const text = await res.text();
+          let data = {};
+          try { data = JSON.parse(text); } catch { /* non-JSON is fine */ }
+          if (!res.ok || data.ok !== true) throw new Error(data?.error || `HTTP ${res.status}`);
+
+          alert('Thanks! Your info was received. We will contact you soon.');
+          getStartedModal?.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+          getStartedForm.reset();
+        } catch (err) {
+          console.error(err);
+          alert('Sorry, something went wrong submitting the form. Please try again in a moment.');
+        } finally {
+          submitFormBtn.disabled = false;
+          submitFormBtn.textContent = 'Submit';
+        }
+      });
+
+      // ----- ESC to close any open modal -----
+      on(document, 'keydown', (e) => {
+        if (e.key === 'Escape') {
+          [$('#contact-modal'), $('#privacy-modal'), $('#get-started-modal')].forEach(m => {
+            if (m && !m.classList.contains('hidden')) {
+              m.classList.add('hidden');
+              body.classList.remove('overflow-hidden');
+            }
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
