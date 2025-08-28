@@ -376,7 +376,7 @@
             <div class="mt-12 md:mt-0">
               <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Company</h3>
               <ul class="mt-4 space-y-4">
-                <li><a href="#" class="text-base text-gray-400 hover:text-white">About</a></li>
+                <li><a href="#" id="about-link" class="text-base text-gray-400 hover:text-white"> About</a></li>
               </ul>
             </div>
           </div>
@@ -537,6 +537,23 @@
         projectsLink.classList.add('border-indigo-500','text-gray-900');
         homeLink.classList.remove('border-indigo-500','text-gray-900');
         homeLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+      });
+        
+      // ----- Footer About link -----
+      const aboutLink = $('#about-link');
+      on(aboutLink, 'click', (e) => {
+        e.preventDefault();
+        homePage?.classList.remove('hidden');
+        projectsPage?.classList.add('hidden');
+    
+        // Update nav state just like clicking Home
+        homeLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+        homeLink.classList.add('border-indigo-500','text-gray-900');
+        projectsLink.classList.remove('border-indigo-500','text-gray-900');
+        projectsLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
+    
+        // Scroll back to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
       // ----- Contact modal -----
