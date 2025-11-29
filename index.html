@@ -86,14 +86,34 @@
 
       <!-- Mobile menu -->
       <div id="mobile-menu" class="sm:hidden hidden" role="navigation" aria-label="Mobile">
-        <div class="pt-2 pb-3 space-y-1">
-          <a href="#" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-          <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
-          <div class="mt-4 pl-3">
-            <button data-contact-button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">Contact Us</button>
-          </div>
-        </div>
-      </div>
+  <div class="pt-2 pb-3 space-y-1">
+    <a
+      href="#"
+      id="home-link-mobile"
+      class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+    >
+      Home
+    </a>
+
+    <a
+      href="#"
+      id="projects-link-mobile"
+      class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+    >
+      Projects
+    </a>
+
+    <div class="mt-4 pl-3">
+      <button
+        data-contact-button
+        class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+      >
+        Contact Us
+      </button>
+    </div>
+  </div>
+</div>
+
     </nav>
   </header>
 
@@ -551,30 +571,71 @@
       });
 
       // ----- Page navigation -----
-      const homeLink = $('#home-link');
-      const projectsLink = $('#projects-link');
-      const homePage = $('#home-page');
-      const projectsPage = $('#projects-page');
+      // ----- Page navigation -----
+const homeLink = $('#home-link');
+const projectsLink = $('#projects-link');
+const homePage = $('#home-page');
+const projectsPage = $('#projects-page');
 
-      on(homeLink, 'click', (e) => {
-        e.preventDefault();
-        homePage?.classList.remove('hidden');
-        projectsPage?.classList.add('hidden');
-        homeLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-        homeLink.classList.add('border-indigo-500','text-gray-900');
-        projectsLink.classList.remove('border-indigo-500','text-gray-900');
-        projectsLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-      });
+// Mobile links
+const homeLinkMobile = $('#home-link-mobile');
+const projectsLinkMobile = $('#projects-link-mobile');
 
-      on(projectsLink, 'click', (e) => {
-        e.preventDefault();
-        homePage?.classList.add('hidden');
-        projectsPage?.classList.remove('hidden');
-        projectsLink.classList.remove('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-        projectsLink.classList.add('border-indigo-500','text-gray-900');
-        homeLink.classList.remove('border-indigo-500','text-gray-900');
-        homeLink.classList.add('border-transparent','text-gray-500','hover:border-gray-300','hover:text-gray-700');
-      });
+// Shared helpers
+function showHome() {
+  homePage?.classList.remove('hidden');
+  projectsPage?.classList.add('hidden');
+
+  homeLink.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+  homeLink.classList.add('border-indigo-500', 'text-gray-900');
+
+  projectsLink.classList.remove('border-indigo-500', 'text-gray-900');
+  projectsLink.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+}
+
+function showProjects() {
+  homePage?.classList.add('hidden');
+  projectsPage?.classList.remove('hidden');
+
+  projectsLink.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+  projectsLink.classList.add('border-indigo-500', 'text-gray-900');
+
+  homeLink.classList.remove('border-indigo-500', 'text-gray-900');
+  homeLink.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+}
+
+// Desktop nav
+on(homeLink, 'click', (e) => {
+  e.preventDefault();
+  showHome();
+});
+
+on(projectsLink, 'click', (e) => {
+  e.preventDefault();
+  showProjects();
+});
+
+// Helper to close mobile menu
+function closeMobileMenu() {
+  if (!mobileMenu.classList.contains('hidden')) {
+    mobileMenu.classList.add('hidden');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+  }
+}
+
+// Mobile nav
+on(homeLinkMobile, 'click', (e) => {
+  e.preventDefault();
+  showHome();
+  closeMobileMenu();
+});
+
+on(projectsLinkMobile, 'click', (e) => {
+  e.preventDefault();
+  showProjects();
+  closeMobileMenu();
+});
+
         
       // ----- Footer About link -----
       const aboutLink = $('#about-link');
